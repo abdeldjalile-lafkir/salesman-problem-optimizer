@@ -41,12 +41,15 @@ bool validatePath(const Path &path)
     if (path.nodes.size() != numNodes)
         return false;
 
-    unordered_set<string> seen;
+    vector<string> seen;
     for (const auto &node : path.nodes)
     {
-        if (node.name.empty() || seen.count(node.name))
+        if (node.name.empty())
             return false;
-        seen.insert(node.name);
+        for (const auto &s : seen)
+            if (s == node.name)
+                return false;
+        seen.push_back(node.name);
     }
 
     return true;
