@@ -1,0 +1,1 @@
+/usr/bin/c++  -Wall -Wextra -Wpedantic -Wl,--dependency-file=CMakeFiles/tsp_optimizer.dir/link.d CMakeFiles/tsp_optimizer.dir/src/main.cpp.o CMakeFiles/tsp_optimizer.dir/src/algorithm.cpp.o CMakeFiles/tsp_optimizer.dir/src/utils.cpp.o -o tsp_optimizer
