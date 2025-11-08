@@ -1,28 +1,18 @@
 #include "iostream"
-#include "algorithm.h"
-#include <algorithm>
-#include "utils.h"
 #include <random>
+#include <algorithm>
+#include "../include/algorithm.h"
+#include "../include/utils.h"
 static std::mt19937 rang(std::random_device{}());
 
 Algorithm::Algorithm()
 {
 }
 
-vector<Path> Algorithm::populate(const vector<Node> &nodes, const vector<Edge> &edges)
+vector<Path> Algorithm::populate()
 {
     vector<Path> initialPopulation;
-
-    for (int i = 0; i < initialPopulationSize; i++)
-    {
-        Path newPath;
-        newPath.nodes = nodes;
-        shuffle(newPath.nodes.begin(), newPath.nodes.end(), rang);
-        Path tempPath = newPath;
-        newPath = fitness(edges, tempPath);
-        initialPopulation.push_back(newPath);
-    }
-
+    initialPopulation = randomPopulation();
     return initialPopulation;
 }
 

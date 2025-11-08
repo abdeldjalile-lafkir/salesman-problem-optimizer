@@ -1,7 +1,8 @@
-#include "algorithm.h"
 #include <iostream>
+#include "../include/algorithm.h"
 
-int main() {
+int main()
+{
   int generations = 0;
 
   Algorithm geneticAlgorithm;
@@ -16,41 +17,44 @@ int main() {
   Path optimumPath;
   optimumPath.cost = 100;
 
-  seedData(nodes, edges);
-  population = geneticAlgorithm.populate(nodes, edges);
+  population = geneticAlgorithm.populate();
 
-  do {
+  do
+  {
     parents = geneticAlgorithm.select(population);
     path = geneticAlgorithm.crossover(parents);
     path = geneticAlgorithm.mutate(path);
 
     status = validatePath(path);
-    if (!status) {
+    if (!status)
+    {
       cerr << "Invalid path generated." << endl;
       continue;
     }
 
     Path tempPath = path;
-    path = fitness(edges, tempPath);
+    path = fitness(tempPath);
 
     population = expendPopulation(population, path);
 
     cout << "Path: [";
-    for (const auto &node : path.nodes) {
+    for (const auto &node : path.nodes)
+    {
       cout << " " << node.name << " ";
     }
     cout << "]" << endl;
     cout << "Path cost = " << path.cost << endl;
+    cout << "------------------------------------------" << endl;
 
     optimumPath = path.cost < optimumPath.cost ? path : optimumPath;
-
     generations++;
 
   } while (generations <= 100 && !hasConverged(population));
 
   cout << "==========================================" << endl;
   cout << "Optimum Path: [";
-  for (const auto &node : optimumPath.nodes) {
+  for (const auto &node : optimumPath.nodes)
+  {
     cout << " " << node.name << " ";
   }
   cout << "]" << endl;

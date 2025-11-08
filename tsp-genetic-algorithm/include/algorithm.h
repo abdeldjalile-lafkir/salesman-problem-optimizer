@@ -10,7 +10,7 @@ private:
 public:
     Algorithm();
 
-    vector<Path> populate(const vector<Node> &nodes, const vector<Edge> &edges);
+    vector<Path> populate();
     pair<Path, Path> select(const vector<Path> &population);
     Path crossover(const pair<Path, Path> &parents);
     Path mutate(Path &path);

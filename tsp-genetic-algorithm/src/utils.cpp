@@ -1,44 +1,24 @@
-#include "utils.h"
 #include <unordered_set>
+#include <random>
+#include <algorithm>
+#include "../include/utils.h"
 
 using namespace std;
+static mt19937 rang(std::random_device{}());
 
 int numNodes = 7;
 int initialPopulationSize = 50;
 
+vector<Node> nodes = {{0, "A"}, {1, "B"}, {2, "C"}, {3, "D"}, {4, "E"}, {5, "F"}, {6, "G"}, {7, "H"}, {8, "I"}, {9, "J"}, {10, "K"}, {11, "L"}, {12, "M"}, {13, "N"}, {14, "O"}, {15, "P"}, {16, "Q"}, {17, "R"}, {18, "S"}, {19, "T"}, {20, "U"}, {21, "V"}, {22, "W"}, {23, "X"}, {24, "Y"}, {25, "Z"}};
+vector<Edge> edges = {
+    {"AB", 10}, {"AC", 15}, {"AD", 20}, {"AE", 18}, {"AF", 12}, {"AG", 16}, {"BC", 12}, {"BD", 18}, {"BE", 14}, {"BF", 9}, {"BG", 17}, {"CD", 14}, {"CE", 19}, {"CF", 11}, {"CG", 13}, {"DE", 16}, {"DF", 20}, {"DG", 8}, {"EF", 17}, {"EG", 15}, {"FG", 11}};
 // utility functions
-pair<vector<Node>, vector<Edge>> seedData(vector<Node> &nodes, vector<Edge> &edges)
-{
-    Node node;
-    Edge edge;
-
-    vector<string> names = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
-
-    for (int i = 0; i < numNodes; i++)
-    {
-        node.id = i;
-        node.name = names[i];
-        nodes.push_back(node);
-    }
-
-    for (int i = 0; i < numNodes; i++)
-    {
-        for (int j = i + 1; j < numNodes; j++)
-        {
-            edge.endpoints = names[i] + names[j];
-            edge.weight = 4 + rand() % (19 - 4 + 1);
-            edges.push_back(edge);
-        }
-    }
-
-    return {nodes, edges};
-}
 
 bool validatePath(const Path &path)
 {
     if (path.nodes.empty())
         return false;
-    if (path.nodes.size() != numNodes)
+    if (int(path.nodes.size()) != numNodes)
         return false;
 
     vector<string> seen;
@@ -55,7 +35,7 @@ bool validatePath(const Path &path)
     return true;
 }
 
-Path fitness(const vector<Edge> &edges, Path &path)
+Path fitness(Path &path)
 {
     string endpoints = "";
     int cost = 0;
@@ -99,6 +79,20 @@ vector<Path> expendPopulation(vector<Path> &population, Path &path)
 }
 
 // genetic-algorithm functions
+vector<Path> randomPopulation()
+{
+    vector<Path> initialPopulation;
+    for (int i = 0; i < initialPopulationSize; i++)
+    {
+        Path newPath;
+        newPath.nodes = vector<Node>(nodes.begin(), nodes.begin() + numNodes);
+        shuffle(newPath.nodes.begin(), newPath.nodes.end(), rang);
+        Path tempPath = newPath;
+        newPath = fitness(tempPath);
+        initialPopulation.push_back(newPath);
+    }
+    return initialPopulation;
+};
 pair<Path, Path> fitnessSelection(const vector<Path> &population)
 {
     double totalCosts = 0.0;

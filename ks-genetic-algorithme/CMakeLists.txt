@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(genetic-algorithm VERSION 1.0 LANGUAGES CXX)
+project(ks-genetic-algorithme VERSION 1.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -28,16 +28,16 @@ set(HEADERS
     include/utils.h
 )
 
-add_executable(genetic-algorithm ${SOURCES} ${HEADERS})
+add_executable(ks-genetic-algorithme ${SOURCES} ${HEADERS})
 
-set_target_properties(genetic-algorithm PROPERTIES
+set_target_properties(ks-genetic-algorithme PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/build
 )
 
 source_group("Header Files" FILES ${HEADERS})
 source_group("Source Files" FILES ${SOURCES})
 
-install(TARGETS genetic-algorithm
+install(TARGETS ks-genetic-algorithme
     RUNTIME DESTINATION bin
 )
 

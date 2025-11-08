@@ -1,8 +1,7 @@
 #include "iostream"
-#include "algorithm.h"
-#include "utils.h"
 #include <random>
-static std::mt19937 rang(std::random_device{}());
+#include "../include/algorithm.h"
+#include "../include/utils.h"
 
 Algorithm::Algorithm()
 {
@@ -11,15 +10,7 @@ Algorithm::Algorithm()
 vector<Sack> Algorithm::populate()
 {
     vector<Sack> initialPopulation;
-
-    for (int i = 0; i < initialPopulationSize; i++)
-    {
-        Sack newSack;
-        Sack tempSack = newSack;
-        newSack = fitness(tempSack);
-        initialPopulation.push_back(newSack);
-    }
-
+    initialPopulation = randomPopulation();
     return initialPopulation;
 }
 

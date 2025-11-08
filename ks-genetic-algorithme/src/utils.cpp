@@ -1,27 +1,38 @@
-#include "utils.h"
 #include <unordered_set>
+#include <random>
+#include <algorithm>
+#include "../include/utils.h"
 
 using namespace std;
+static mt19937 rang(std::random_device{}());
 
-int numNodes = 7;
-int maxWeight = 30;
+int numItems = 12;
 int initialPopulationSize = 50;
-float A = 1.0;
+
+float A = 0.5;
 float B = 0.5;
 
-// utility functions
-void seedData()
-{
-}
+vector<Object> objects = {
+    {0, 2, 20, 1},
+    {1, 3, 40, 2},
+    {2, 1, 20, 2},
+    {3, 4, 30, 2},
+    {4, 2, 10, 1},
+    {5, 3, 50, 2},
+    {6, 1, 20, 1},
+    {7, 4, 30, 3},
+    {8, 2, 18, 2},
+    {9, 3, 22, 1},
+    {10, 4, 24, 1},
+    {11, 1, 30, 1}};
 
+// utility functions
 bool validateSack(const Sack &sack)
 {
-    if (sack.objects.empty())
-        return false;
-    if (sack.weight > maxWeight)
-        return false;
+    if (sack.objects.empty() || sack.objects.size() < 8 || sack.weight > 100)
+        return "Invalid sack";
 
-    unordered_set<string> seen;
+    unordered_set<int> seen;
     for (const auto &object : sack.objects)
     {
         if (seen.count(object.id) == 0)
@@ -33,60 +44,79 @@ bool validateSack(const Sack &sack)
     return seen.size() >= 8 ? true : false;
 }
 
-Sack fitness(const Sack &sack)
+Sack fitness(Sack &sack)
 {
     int totalWeight = 0;
     int totalValue = 0;
     for (const auto &object : sack.objects)
     {
-        totalWeight += object.weight;
-        totalValue += object.value;
+        totalWeight += object.weight * object.quantity;
+        totalValue += object.value * object.quantity;
     }
 
     sack.weight = totalWeight;
     sack.value = totalValue;
-    sack.fitness = totalValue * A - totalWeight * B;
+    sack.fitness = A * totalWeight + B * totalValue;
     return sack;
 }
 
 bool hasConverged(const vector<Sack> &population)
 {
-    if (population.empty())
+    if (population.size() < 10)
         return false;
 
-    double different = 1;
-    double first = population[0].fitness;
-    for (const auto &sack : population)
+    double different = 1.0;
+    double firstFitness = population.back().fitness;
+    size_t startIdx = population.size() - 10;
+    for (size_t i = startIdx; i < population.size(); ++i)
     {
-        if (abs(sack.fitness - first) > different)
+        if (abs(population[i].fitness - firstFitness) > different)
             return false;
     }
     return true;
 }
 
-vector<Path> expendPopulation(vector<Path> &population, Path &path)
+vector<Sack> expendPopulation(vector<Sack> &population, Sack &sack)
 {
-    population.push_back(path);
+    population.push_back(sack);
     return population;
 }
 
 // genetic-algorithm functions
-pair<Path, Path> fitnessSelection(const vector<Path> &population)
+vector<Sack> randomPopulation()
 {
-    double totalCosts = 0.0;
-    for (const auto &path : population)
+    vector<Sack> initialPopulation;
+    vector<Object> availableObjects = objects;
+
+    for (int i = 0; i < initialPopulationSize; i++)
     {
-        totalCosts += 1 / path.cost;
+        Sack newSack;
+        shuffle(availableObjects.begin(), availableObjects.end(), rang);
+        newSack.objects.clear();
+        newSack.objects.reserve(numItems);
+        newSack.objects = vector<Object>(availableObjects.begin(), availableObjects.begin() + 8 + rand() % (numItems - 8));
+        newSack = fitness(newSack);
+        initialPopulation.push_back(newSack);
+    }
+
+    return initialPopulation;
+}
+pair<Sack, Sack> fitnessSelection(const vector<Sack> &population)
+{
+    double total = 0.0;
+    for (const auto &sack : population)
+    {
+        total += sack.fitness;
     }
     auto selectParent = [&]()
     {
-        double random = (double)rand() / RAND_MAX * totalCosts;
+        double random = (double)rand() / RAND_MAX * total;
         double acc = 0.0;
-        for (const auto &path : population)
+        for (const auto &sack : population)
         {
-            acc += 1.0 / path.cost;
+            acc += sack.fitness;
             if (acc >= random)
-                return path;
+                return sack;
         }
         return population.back();
     };
@@ -94,56 +124,77 @@ pair<Path, Path> fitnessSelection(const vector<Path> &population)
     return {selectParent(), selectParent()};
 };
 
-Path orderedCrossover(const pair<Path, Path> &parents)
+Sack orderedCrossover(const pair<Sack, Sack> &parents)
 {
-    Path childPath;
-    const Path &p1 = parents.first;
-    const Path &p2 = parents.second;
+    Sack childSack;
+    const Sack &s1 = parents.first;
+    const Sack &s2 = parents.second;
 
-    childPath.nodes.resize(numNodes);
-    int start = rand() % numNodes;
-    int end = rand() % numNodes;
+    if (s1.objects.empty() || s2.objects.empty())
+    {
+        return childSack;
+    }
+
+    childSack.objects.resize(s1.objects.size());
+    int start = rand() % s1.objects.size();
+    int end = rand() % s1.objects.size();
     if (start > end)
         std::swap(start, end);
 
-    unordered_set<string> selected;
+    unordered_set<int> selected;
     for (int i = start; i <= end; i++)
     {
-        childPath.nodes[i] = p1.nodes[i];
-        selected.insert(p1.nodes[i].name);
+        childSack.objects[i] = s1.objects[i];
+        selected.insert(s1.objects[i].id);
     }
 
-    int idx = (end + 1) % numNodes;
-    for (int i = 0; i < numNodes; i++)
+    int idx = (end + 1) % s1.objects.size();
+    for (int i = 0; i < int(s2.objects.size()); i++)
     {
-        const Node &node = p2.nodes[i];
-        if (selected.count(node.name) == 0)
+        const Object &object = s2.objects[i];
+        if (selected.count(object.id) == 0)
         {
-            childPath.nodes[idx] = node;
-            idx = (idx + 1) % numNodes;
+            if (idx < static_cast<int>(childSack.objects.size()))
+            {
+                childSack.objects[idx] = object;
+                idx = (idx + 1) % s1.objects.size();
+            }
         }
     }
-    return childPath;
+    return childSack;
 };
-Path inversionMutation(Path &path)
+Sack inversionMutation(Sack &sack)
 {
+    unordered_set<int> objectIds;
+    for (const auto &obj : sack.objects)
     {
+        objectIds.insert(obj.id);
+    }
 
-        int start = rand() % numNodes;
-        int end = rand() % numNodes;
-        if (start > end)
-            std::swap(start, end);
-
-        while (start < end)
+    if (sack.objects.size() <= 9)
+    {
+        vector<Object> availableObjects;
+        for (const auto &obj : objects)
         {
-            std::swap(path.nodes[start], path.nodes[end]);
-            start++;
-            end--;
+            if (objectIds.count(obj.id) == 0)
+            {
+                sack.objects.push_back(obj);
+            }
         }
-
-        path.cost = 0.0;
-        return path;
-    };
+    }
+    else if (sack.objects.size() >= 11)
+    {
+        sack.objects.pop_back();
+    }
+    else
+    {
+        int idx = rand() % sack.objects.size();
+        if (sack.objects[idx].quantity < objects[objects[idx].id].quantity)
+        {
+            sack.objects[idx].quantity += 1;
+        }
+    }
+    return sack;
 }
 
 // TODO: Implement these functions later

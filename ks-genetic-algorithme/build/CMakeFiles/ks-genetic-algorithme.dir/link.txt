@@ -1,0 +1,1 @@
+/usr/bin/c++  -Wall -Wextra -Wpedantic -Wl,--dependency-file=CMakeFiles/ks-genetic-algorithme.dir/link.d "CMakeFiles/ks-genetic-algorithme.dir/src/main.cpp.o" "CMakeFiles/ks-genetic-algorithme.dir/src/algorithm.cpp.o" "CMakeFiles/ks-genetic-algorithme.dir/src/utils.cpp.o" -o ks-genetic-algorithme

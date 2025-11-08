@@ -40,12 +40,23 @@ The algorithm uses:
 Edit `src/utils.cpp`:
 
 ```cpp
-int numItems = 10;
+int numItems = 12;
 int initialPopulationSize = 50;
+float A = 0.5; // alpha value for multiplying weight
+float B = 0.5; // beta value for multiplying value
 ```
 
 ## Output Example
 
 ```
-
+Sack: [ 0 3 4 2 1 6 5 ]
+Sack weight = 87
+Sack value = 120
+Sack fitness = 84
+...
+==========================================
+Optimum Sack: [ 0 2 3 1 5 4 ]
+Sack weight = 79
+Sack value = 100
+Sack fitness = 80
 ```

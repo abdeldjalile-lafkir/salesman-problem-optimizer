@@ -1,4 +1,4 @@
-# Install script for directory: /home/abdeldjalile-lafkir/Projects/problem-optimizers/tsp-genetic-algorithm
+# Install script for directory: /home/abdeldjalile-lafkir/Projects/Problem-Optimization-Metaheuristics/tsp-genetic-algorithm
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -43,17 +43,17 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/tsp-genetic-algorithm" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/tsp-genetic-algorithm")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/tsp-genetic-algorithme" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/tsp-genetic-algorithme")
     file(RPATH_CHECK
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/tsp-genetic-algorithm"
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/tsp-genetic-algorithme"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/home/abdeldjalile-lafkir/Projects/problem-optimizers/tsp-genetic-algorithm/build/tsp-genetic-algorithm")
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/tsp-genetic-algorithm" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/tsp-genetic-algorithm")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/home/abdeldjalile-lafkir/Projects/Problem-Optimization-Metaheuristics/tsp-genetic-algorithm/build/tsp-genetic-algorithme")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/tsp-genetic-algorithme" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/tsp-genetic-algorithme")
     if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/tsp-genetic-algorithm")
+      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/tsp-genetic-algorithme")
     endif()
   endif()
 endif()
@@ -61,7 +61,7 @@ endif()
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "/home/abdeldjalile-lafkir/Projects/problem-optimizers/tsp-genetic-algorithm/build/install_local_manifest.txt"
+  file(WRITE "/home/abdeldjalile-lafkir/Projects/Problem-Optimization-Metaheuristics/tsp-genetic-algorithm/build/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()
 if(CMAKE_INSTALL_COMPONENT)
@@ -77,6 +77,6 @@ else()
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "/home/abdeldjalile-lafkir/Projects/problem-optimizers/tsp-genetic-algorithm/build/${CMAKE_INSTALL_MANIFEST}"
+  file(WRITE "/home/abdeldjalile-lafkir/Projects/Problem-Optimization-Metaheuristics/tsp-genetic-algorithm/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

@@ -1,6 +1,6 @@
-#include "algorithm.h"
 #include <iostream>
-#include <utils.h>
+#include "../include/algorithm.h"
+#include "../include/utils.h"
 
 using namespace std;
 
@@ -16,8 +16,7 @@ int main()
   bool status;
 
   Sack optimumSack;
-  optimumSack.weight = 30;
-  optimumSack.value = 0;
+  optimumSack.fitness = 0.0;
 
   population = geneticAlgorithm.populate();
 
@@ -27,15 +26,15 @@ int main()
     sack = geneticAlgorithm.crossover(parents);
     sack = geneticAlgorithm.mutate(sack);
 
+    Sack tempSack = sack;
+    sack = fitness(tempSack);
+
     status = validateSack(sack);
     if (!status)
     {
       cerr << "Invalid sack generated." << endl;
       continue;
     }
-
-    Sack tempSack = sack;
-    sack = fitness(tempSack);
 
     population = expendPopulation(population, sack);
 
@@ -47,9 +46,10 @@ int main()
     cout << "]" << endl;
     cout << "Sack weight = " << sack.weight << endl;
     cout << "Sack value = " << sack.value << endl;
+    cout << "Sack fitness = " << sack.fitness << endl;
+    cout << "-----------------------------------------------------------------" << endl;
 
     optimumSack = sack.fitness > optimumSack.fitness ? sack : optimumSack;
-
     generations++;
 
   } while (generations <= 100 && !hasConverged(population));

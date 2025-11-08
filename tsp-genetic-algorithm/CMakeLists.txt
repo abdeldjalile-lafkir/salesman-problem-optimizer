@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(tsp-genetic-algorithm VERSION 1.0 LANGUAGES CXX)
+project(tsp-genetic-algorithme VERSION 1.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -28,16 +28,16 @@ set(HEADERS
     include/utils.h
 )
 
-add_executable(tsp-genetic-algorithm ${SOURCES} ${HEADERS})
+add_executable(tsp-genetic-algorithme ${SOURCES} ${HEADERS})
 
-set_target_properties(tsp-genetic-algorithm PROPERTIES
+set_target_properties(tsp-genetic-algorithme PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/build
 )
 
 source_group("Header Files" FILES ${HEADERS})
 source_group("Source Files" FILES ${SOURCES})
 
-install(TARGETS tsp-genetic-algorithm
+install(TARGETS tsp-genetic-algorithme
     RUNTIME DESTINATION bin
 )
 

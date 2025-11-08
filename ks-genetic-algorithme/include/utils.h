@@ -8,6 +8,7 @@ using namespace std;
 
 extern int numItems;
 extern int initialPopulationSize;
+
 extern float A;
 extern float B;
 
@@ -23,20 +24,22 @@ struct Sack
 {
     int weight;
     int value;
-    float fitness;
+    double fitness;
     vector<Object> objects;
 };
 
+extern vector<Object> objects;
+
 // utility functions
-vector<Sack> seedData();
 bool validateSack(const Sack &sack);
 bool hasConverged(const vector<Sack> &population);
-Sack fitness(const Sack &sack);
+Sack fitness(Sack &sack);
 vector<Sack> expendPopulation(vector<Sack> &population, Sack &sack);
 
 // genetic-algorithm functions
+vector<Sack> randomPopulation();
 pair<Sack, Sack> fitnessSelection(const vector<Sack> &population);
 Sack orderedCrossover(const pair<Sack, Sack> &parents);
-Sack inversionMutation(Sack &path);
+Sack inversionMutation(Sack &sack);
 
 #endif
