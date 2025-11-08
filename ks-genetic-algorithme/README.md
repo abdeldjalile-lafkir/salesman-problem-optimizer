@@ -1,10 +1,10 @@
-# Genetic Algorithm - TSP Solver
+# Genetic Algorithm - Knapsack Solver
 
-A C++ implementation of a genetic algorithm to solve the Traveling Salesman Problem.
+A C++ implementation of a genetic algorithm to solve the knapsack Problem.
 
 ## Overview
 
-This program finds the shortest route that visits all cities exactly once and returns to the starting city using evolutionary computing techniques.
+This program solves the knapsack problem using evolutionary computing techniques.
 
 ## Requirements
 
@@ -14,7 +14,7 @@ This program finds the shortest route that visits all cities exactly once and re
 ## Build
 
 ```bash
-cd genetic-algorithm
+cd ks-genetic-algorithm
 mkdir -p build && cd build
 cmake ..
 make
@@ -23,7 +23,7 @@ make
 ## Run
 
 ```bash
-./genetic-algorithm
+./ks-genetic-algorithm
 ```
 
 ## How It Works
@@ -40,17 +40,12 @@ The algorithm uses:
 Edit `src/utils.cpp`:
 
 ```cpp
-int numNodes = 7;
+int numItems = 10;
 int initialPopulationSize = 50;
 ```
 
 ## Output Example
 
 ```
-Path: [ A  C  B  E  D  F  G  ]
-Path cost = 87
-...
-==========================================
-Optimum Path: [ A  E  C  D  B  G  F  ]
-Path cost = 79
+
 ```
