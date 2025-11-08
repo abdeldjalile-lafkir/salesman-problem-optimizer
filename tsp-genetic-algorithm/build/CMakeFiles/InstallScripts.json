@@ -1,7 +1,7 @@
 {
 	"InstallScripts" : 
 	[
-		"/home/abdeldjalile-lafkir/Projects/salesman-problem-optimizer/genetic-algorithm/build/cmake_install.cmake"
+		"/home/abdeldjalile-lafkir/Projects/problem-optimizers/tsp-genetic-algorithm/build/cmake_install.cmake"
 	],
 	"Parallel" : false
 }

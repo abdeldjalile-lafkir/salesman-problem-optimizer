@@ -1,0 +1,1 @@
+/usr/bin/c++  -Wall -Wextra -Wpedantic -Wl,--dependency-file=CMakeFiles/tsp-genetic-algorithm.dir/link.d "CMakeFiles/tsp-genetic-algorithm.dir/src/main.cpp.o" "CMakeFiles/tsp-genetic-algorithm.dir/src/algorithm.cpp.o" "CMakeFiles/tsp-genetic-algorithm.dir/src/utils.cpp.o" -o tsp-genetic-algorithm

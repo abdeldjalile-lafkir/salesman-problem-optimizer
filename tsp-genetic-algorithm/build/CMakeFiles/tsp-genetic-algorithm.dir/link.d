@@ -1,10 +1,10 @@
-genetic-algorithm: \
+tsp-genetic-algorithm: \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/Scrt1.o \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crti.o \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o \
-  CMakeFiles/genetic-algorithm.dir/src/main.cpp.o \
-  CMakeFiles/genetic-algorithm.dir/src/algorithm.cpp.o \
-  CMakeFiles/genetic-algorithm.dir/src/utils.cpp.o \
+  CMakeFiles/tsp-genetic-algorithm.dir/src/main.cpp.o \
+  CMakeFiles/tsp-genetic-algorithm.dir/src/algorithm.cpp.o \
+  CMakeFiles/tsp-genetic-algorithm.dir/src/utils.cpp.o \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libstdc++.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libm.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libm.so \
@@ -39,11 +39,11 @@ genetic-algorithm: \
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o:
 
-CMakeFiles/genetic-algorithm.dir/src/main.cpp.o:
+CMakeFiles/tsp-genetic-algorithm.dir/src/main.cpp.o:
 
-CMakeFiles/genetic-algorithm.dir/src/algorithm.cpp.o:
+CMakeFiles/tsp-genetic-algorithm.dir/src/algorithm.cpp.o:
 
-CMakeFiles/genetic-algorithm.dir/src/utils.cpp.o:
+CMakeFiles/tsp-genetic-algorithm.dir/src/utils.cpp.o:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libstdc++.so:
 

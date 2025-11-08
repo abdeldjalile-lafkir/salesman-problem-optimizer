@@ -1,7 +1,7 @@
-CMakeFiles/genetic-algorithm.dir/src/utils.cpp.o: \
- /home/abdeldjalile-lafkir/Projects/salesman-problem-optimizer/genetic-algorithm/src/utils.cpp \
+CMakeFiles/tsp-genetic-algorithm.dir/src/utils.cpp.o: \
+ /home/abdeldjalile-lafkir/Projects/problem-optimizers/tsp-genetic-algorithm/src/utils.cpp \
  /usr/include/stdc-predef.h \
- /home/abdeldjalile-lafkir/Projects/salesman-problem-optimizer/genetic-algorithm/include/utils.h \
+ /home/abdeldjalile-lafkir/Projects/problem-optimizers/tsp-genetic-algorithm/include/utils.h \
  /usr/include/c++/15.2.1/string \
  /usr/include/c++/15.2.1/bits/requires_hosted.h \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++config.h \

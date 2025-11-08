@@ -1,4 +1,4 @@
-# Problem Optimizer
+# Problem Optimization Metaheuristics
 
 A comprehensive collection of metaheuristic algorithms for solving optimization problems. This project implements and compares various optimization approaches to find near-optimal solutions for different problem instances.
 

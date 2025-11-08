@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/abdeldjalile-lafkir/Projects/salesman-problem-optimizer/genetic-algorithm/include
+CXX_INCLUDES = -I/home/abdeldjalile-lafkir/Projects/problem-optimizers/tsp-genetic-algorithm/include
 
 CXX_FLAGS =  -Wall -Wextra -Wpedantic -std=c++17
 

@@ -1,5 +1,5 @@
-CMakeFiles/genetic-algorithm.dir/src/algorithm.cpp.o: \
- /home/abdeldjalile-lafkir/Projects/salesman-problem-optimizer/genetic-algorithm/src/algorithm.cpp \
+CMakeFiles/tsp-genetic-algorithm.dir/src/algorithm.cpp.o: \
+ /home/abdeldjalile-lafkir/Projects/problem-optimizers/tsp-genetic-algorithm/src/algorithm.cpp \
  /usr/include/stdc-predef.h /usr/include/c++/15.2.1/iostream \
  /usr/include/c++/15.2.1/bits/requires_hosted.h \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++config.h \
@@ -145,8 +145,8 @@ CMakeFiles/genetic-algorithm.dir/src/algorithm.cpp.o: \
  /usr/include/c++/15.2.1/bits/basic_ios.tcc \
  /usr/include/c++/15.2.1/bits/ostream.tcc /usr/include/c++/15.2.1/istream \
  /usr/include/c++/15.2.1/bits/istream.tcc \
- /home/abdeldjalile-lafkir/Projects/salesman-problem-optimizer/genetic-algorithm/include/algorithm.h \
- /home/abdeldjalile-lafkir/Projects/salesman-problem-optimizer/genetic-algorithm/include/utils.h \
+ /home/abdeldjalile-lafkir/Projects/problem-optimizers/tsp-genetic-algorithm/include/algorithm.h \
+ /home/abdeldjalile-lafkir/Projects/problem-optimizers/tsp-genetic-algorithm/include/utils.h \
  /usr/include/c++/15.2.1/vector \
  /usr/include/c++/15.2.1/bits/stl_uninitialized.h \
  /usr/include/c++/15.2.1/bits/stl_vector.h \
@@ -160,7 +160,7 @@ CMakeFiles/genetic-algorithm.dir/src/algorithm.cpp.o: \
  /usr/include/c++/15.2.1/bits/stl_tempbuf.h \
  /usr/include/c++/15.2.1/pstl/glue_algorithm_defs.h \
  /usr/include/c++/15.2.1/pstl/execution_defs.h \
- /home/abdeldjalile-lafkir/Projects/salesman-problem-optimizer/genetic-algorithm/include/utils.h \
+ /home/abdeldjalile-lafkir/Projects/problem-optimizers/tsp-genetic-algorithm/include/utils.h \
  /usr/include/c++/15.2.1/random /usr/include/c++/15.2.1/cmath \
  /usr/include/math.h /usr/include/bits/math-vector.h \
  /usr/include/bits/libm-simd-decl-stubs.h \

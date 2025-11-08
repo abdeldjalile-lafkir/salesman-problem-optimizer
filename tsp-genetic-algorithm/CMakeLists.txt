@@ -37,7 +37,7 @@ set_target_properties(tsp-genetic-algorithm PROPERTIES
 source_group("Header Files" FILES ${HEADERS})
 source_group("Source Files" FILES ${SOURCES})
 
-install(TARGETS genetic-algorithm
+install(TARGETS tsp-genetic-algorithm
     RUNTIME DESTINATION bin
 )
 
