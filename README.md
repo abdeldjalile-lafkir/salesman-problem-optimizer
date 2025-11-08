@@ -1,10 +1,10 @@
-# Traveling Salesman Problem (TSP) Optimizer
+# Problem Optimizer
 
-A comprehensive collection of metaheuristic algorithms for solving the Traveling Salesman Problem (TSP). This project implements and compares various optimization approaches to find near-optimal solutions for TSP instances.
+A comprehensive collection of metaheuristic algorithms for solving optimization problems. This project implements and compares various optimization approaches to find near-optimal solutions for different problem instances.
 
 ## 🎯 Overview
 
-The Traveling Salesman Problem is a classic NP-hard optimization problem where the goal is to find the shortest possible route that visits each city exactly once and returns to the starting city. This project implements multiple metaheuristic algorithms to solve TSP instances efficiently.
+This repository focuses on implementing metaheuristic algorithms such as Genetic Algorithms, Cat Swarm Optimization, and more. Each algorithm is designed to tackle combinatorial optimization problems like the Traveling Salesman Problem (TSP), Knapsack Problem, and others.
 
 ## 🧬 Implemented Algorithms
 
@@ -12,7 +12,7 @@ The Traveling Salesman Problem is a classic NP-hard optimization problem where t
 
 A population-based evolutionary algorithm that uses selection, crossover, and mutation operators to evolve solutions over generations.
 
-- **Location**: `genetic-algorithm/`
+- **Location**: `{problemName}-genetic-algorithm/`
 - **Status**: ✅ Implemented
 
 ### Others Algorithms Coming soon

@@ -55,10 +55,10 @@ bool hasConverged(const vector<Sack> &population)
         return false;
 
     double different = 1;
-    double firstCost = population[0].cost;
-    for (const auto &path : population)
+    double first = population[0].fitness;
+    for (const auto &sack : population)
     {
-        if (abs(path.cost - firstCost) > different)
+        if (abs(sack.fitness - first) > different)
             return false;
     }
     return true;

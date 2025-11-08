@@ -41,12 +41,15 @@ bool validatePath(const Path &path)
     if (path.nodes.size() != numNodes)
         return false;
 
-    unordered_set<string> seen;
+    vector<string> seen;
     for (const auto &node : path.nodes)
     {
-        if (node.name.empty() || seen.count(node.name))
+        if (node.name.empty())
             return false;
-        seen.insert(node.name);
+        for (const auto &s : seen)
+            if (s == node.name)
+                return false;
+        seen.push_back(node.name);
     }
 
     return true;
@@ -75,14 +78,15 @@ Path fitness(const vector<Edge> &edges, Path &path)
 
 bool hasConverged(const vector<Path> &population)
 {
-    if (population.empty())
+    if (population.size() < 10)
         return false;
 
-    double different = 10e-3;
-    double firstCost = population[0].cost;
-    for (const auto &path : population)
+    double different = 1.0;
+    double firstCost = population.back().cost;
+    size_t startIdx = population.size() - 10;
+    for (size_t i = startIdx; i < population.size(); ++i)
     {
-        if (abs(path.cost - firstCost) > different)
+        if (abs(population[i].cost - firstCost) > different)
             return false;
     }
     return true;
