@@ -12,8 +12,8 @@ int initialPopulationSize = 50;
 vector<Node> nodes = {{0, "A"}, {1, "B"}, {2, "C"}, {3, "D"}, {4, "E"}, {5, "F"}, {6, "G"}, {7, "H"}, {8, "I"}, {9, "J"}, {10, "K"}, {11, "L"}, {12, "M"}, {13, "N"}, {14, "O"}, {15, "P"}, {16, "Q"}, {17, "R"}, {18, "S"}, {19, "T"}, {20, "U"}, {21, "V"}, {22, "W"}, {23, "X"}, {24, "Y"}, {25, "Z"}};
 vector<Edge> edges = {
     {"AB", 10}, {"AC", 15}, {"AD", 20}, {"AE", 18}, {"AF", 12}, {"AG", 16}, {"BC", 12}, {"BD", 18}, {"BE", 14}, {"BF", 9}, {"BG", 17}, {"CD", 14}, {"CE", 19}, {"CF", 11}, {"CG", 13}, {"DE", 16}, {"DF", 20}, {"DG", 8}, {"EF", 17}, {"EG", 15}, {"FG", 11}};
-// utility functions
 
+// utility functions
 bool validatePath(const Path &path)
 {
     if (path.nodes.empty())
@@ -167,8 +167,3 @@ Path inversionMutation(Path &path)
         return path;
     };
 }
-
-// TODO: Implement these functions later
-// pair<Path, Path> elitismTournamentSelection(const vector<Path> &population) {};
-// Path edgeRecombinationCrossover(const pair<Path, Path> &parents) {};
-// Path twoOptMutation(Path &path) {};

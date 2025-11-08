@@ -1,8 +1,5 @@
 #include <iostream>
 #include "../include/algorithm.h"
-#include "../include/utils.h"
-
-using namespace std;
 
 int main()
 {

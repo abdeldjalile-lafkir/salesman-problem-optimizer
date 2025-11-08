@@ -6,8 +6,6 @@ int main()
   int generations = 0;
 
   Algorithm geneticAlgorithm;
-  vector<Node> nodes;
-  vector<Edge> edges;
   vector<Path> population;
 
   pair<Path, Path> parents;
@@ -25,15 +23,15 @@ int main()
     path = geneticAlgorithm.crossover(parents);
     path = geneticAlgorithm.mutate(path);
 
+    Path tempPath = path;
+    path = fitness(tempPath);
+
     status = validatePath(path);
     if (!status)
     {
       cerr << "Invalid path generated." << endl;
       continue;
     }
-
-    Path tempPath = path;
-    path = fitness(tempPath);
 
     population = expendPopulation(population, path);
 

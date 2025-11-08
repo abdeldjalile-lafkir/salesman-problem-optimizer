@@ -103,14 +103,14 @@ vector<Sack> randomPopulation()
 }
 pair<Sack, Sack> fitnessSelection(const vector<Sack> &population)
 {
-    double total = 0.0;
+    double totalFitness = 0.0;
     for (const auto &sack : population)
     {
-        total += sack.fitness;
+        totalFitness += sack.fitness;
     }
     auto selectParent = [&]()
     {
-        double random = (double)rand() / RAND_MAX * total;
+        double random = (double)rand() / RAND_MAX * totalFitness;
         double acc = 0.0;
         for (const auto &sack : population)
         {
@@ -129,11 +129,6 @@ Sack orderedCrossover(const pair<Sack, Sack> &parents)
     Sack childSack;
     const Sack &s1 = parents.first;
     const Sack &s2 = parents.second;
-
-    if (s1.objects.empty() || s2.objects.empty())
-    {
-        return childSack;
-    }
 
     childSack.objects.resize(s1.objects.size());
     int start = rand() % s1.objects.size();
@@ -196,8 +191,3 @@ Sack inversionMutation(Sack &sack)
     }
     return sack;
 }
-
-// TODO: Implement these functions later
-// pair<Path, Path> elitismTournamentSelection(const vector<Path> &population) {};
-// Path edgeRecombinationCrossover(const pair<Path, Path> &parents) {};
-// Path twoOptMutation(Path &path) {};

@@ -1,9 +1,7 @@
 #include "iostream"
 #include <random>
-#include <algorithm>
 #include "../include/algorithm.h"
 #include "../include/utils.h"
-static std::mt19937 rang(std::random_device{}());
 
 Algorithm::Algorithm()
 {
