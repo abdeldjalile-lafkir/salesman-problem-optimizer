@@ -40,7 +40,7 @@ struct Cat
     bool isSeeking;
 };
 
-/// Global cat population
+/// Global best cat
 extern Cat bestCat;
 
 // Global cat population
