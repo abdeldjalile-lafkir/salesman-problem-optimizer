@@ -23,6 +23,7 @@ vector<Job> jobs = {
 bool validateOrder(const Order &order)
 {
     // one a job task appeare in position i on machine Mx, it should not appear in position j on machine My where j <= i , for eaxh x<y
+    return false;
 }
 
 Order fitness(Order &order)
@@ -76,6 +77,30 @@ vector<Order> randomPopulation()
     for (int i = 0; i < initialPopulationSize; i++)
     {
         Order newOrder;
+        unordered_set<int> assignedJobs;
+        while (assignedJobs.size() < numJobs)
+        {
+            int jobId = rand() % numJobs;
+            if (assignedJobs.find(jobId) == assignedJobs.end())
+            {
+                assignedJobs.insert(jobId);
+                Job job = jobs[jobId];
+                for (const auto &task : job.tasks)
+                {
+                    if (task.machine == "M1")
+                        newOrder.M1.push_back(job);
+                    else if (task.machine == "M2")
+                        newOrder.M2.push_back(job);
+                    else if (task.machine == "M3")
+                        newOrder.M3.push_back(job);
+                    else if (task.machine == "M4")
+                        newOrder.M4.push_back(job);
+                    else if (task.machine == "M5")
+                        newOrder.M5.push_back(job);
+                }
+            }
+        }
+
         Order tempOrder = newOrder;
         newOrder = fitness(tempOrder);
         initialPopulation.push_back(newOrder);
